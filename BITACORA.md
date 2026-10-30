@@ -1,6 +1,8 @@
 # Bitácora técnica: integración del piloto
 
-Tienda en línea de Casa de Jesús, A.C. · Diego David Lara Martínez.
+Tienda en línea de Casa de Jesús, A.C. · Equipo 3: Diego David Lara Martínez y Héctor Oropeza Pelcastre.
+
+Reparto según el plan de trabajo del 28 de octubre: Héctor, base de datos (modelo, tablas, relaciones y reglas); Diego, arquitectura, ficha de tecnologías, flujo de datos, repositorio y conexión de la aplicación. La bitácora, la revisión contra la guía y la exposición son de los dos.
 
 | Fecha | Qué se hizo o se decidió | Dificultad y cómo se resolvió |
 |---|---|---|

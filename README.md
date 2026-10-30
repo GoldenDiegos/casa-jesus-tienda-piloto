@@ -1,6 +1,6 @@
 # Casa de Jesús, A.C. · piloto de la tienda en línea
 
-Integración tecnológica del proyecto social de la materia Taller de Proyecto Social Integrador (Global University). Diego David Lara Martínez.
+Integración tecnológica del proyecto social de la materia Taller de Proyecto Social Integrador (Global University). Equipo 3: Diego David Lara Martínez y Héctor Oropeza Pelcastre.
 
 Esta etapa deja configurada la base de datos, conectada la aplicación y documentado lo que falta. Todavía no es la tienda: no hay compras, pagos ni despliegue.
 
