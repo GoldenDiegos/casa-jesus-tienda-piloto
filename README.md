@@ -1,7 +1,7 @@
 # Integración tecnológica del piloto · Tienda en línea de Casa de Jesús, A.C.
 
-**Taller de Proyecto Social Integrador** · Global University · Licenciatura en Ciberseguridad y Desarrollo de Software
-**Equipo 3:** Diego David Lara Martínez y Héctor Oropeza Pelcastre
+**Taller de Proyecto Social Integrador** · Global University · Licenciatura en Ciberseguridad y Desarrollo de Software<br>
+**Equipo 3:** Diego David Lara Martínez y Héctor Oropeza Pelcastre<br>
 **Docente:** María de Montserrat Villalobos Solís · **Entrega:** 30 de octubre de 2026
 
 Casa de Jesús es una asociación de Aguascalientes que vende pays y galletas y recibe donativos. En esta etapa se eligieron las tecnologías del piloto, se configuró la base de datos, se conectó la aplicación con ella y se documentó lo que falta. **Todavía no es la tienda**: la interfaz, el flujo de compra, los pagos y las pruebas funcionales son de la siguiente etapa, como marca la guía.
