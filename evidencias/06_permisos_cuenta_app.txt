@@ -1,0 +1,6 @@
+Evidencia 6. Permisos de la cuenta de la aplicación
+Fecha: 30/10/2026 16:51
+
+> mysql --port=3307 -e "SHOW GRANTS FOR 'cj_piloto_lectura'@'127.0.0.1'"
+GRANT USAGE ON *.* TO `cj_piloto_lectura`@`127.0.0.1` IDENTIFIED BY PASSWORD '[oculto]'
+GRANT SELECT ON `casa_jesus_piloto`.`productos` TO `cj_piloto_lectura`@`127.0.0.1`

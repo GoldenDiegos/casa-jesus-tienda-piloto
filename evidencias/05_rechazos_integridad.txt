@@ -1,0 +1,20 @@
+Evidencia 5. Datos inválidos rechazados (transacción con ROLLBACK)
+Fecha: 30/10/2026 16:51
+
+> START TRANSACTION;
+INSERT INTO productos (nombre, precio) VALUES ('Prueba precio negativo', -10);
+INSERT INTO productos (nombre, precio, categoria_id) VALUES ('Prueba categoria inexistente', 100, 999);
+INSERT INTO donativos_independientes (folio, importe, nombre_donante) VALUES ('D-PRUEBA', 5, 'Prueba');
+INSERT INTO pagos (proveedor, importe) VALUES ('mercado_pago_prueba', 100);
+ROLLBACK;
+SELECT (SELECT COUNT(*) FROM productos) AS productos, (SELECT COUNT(*) FROM donativos_independientes) AS donativos,
+       (SELECT COUNT(*) FROM pagos) AS pagos;
+ERROR 4025 (23000) at line 2: CONSTRAINT `productos.precio` failed for `casa_jesus_piloto`.`productos`
+ERROR 1452 (23000) at line 3: Cannot add or update a child row: a foreign key constraint fails (`casa_jesus_piloto`.`productos`, CONSTRAINT `fk_producto_categoria` FOREIGN KEY (`categoria_id`) REFERENCES `categorias` (`id`))
+ERROR 4025 (23000) at line 4: CONSTRAINT `chk_donativo_minimo` failed for `casa_jesus_piloto`.`donativos_independientes`
+ERROR 4025 (23000) at line 5: CONSTRAINT `chk_pago_origen` failed for `casa_jesus_piloto`.`pagos`
++-----------+-----------+-------+
+| productos | donativos | pagos |
++-----------+-----------+-------+
+|         0 |         0 |     0 |
++-----------+-----------+-------+

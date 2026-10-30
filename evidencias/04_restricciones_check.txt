@@ -1,0 +1,56 @@
+Evidencia 4. Reglas CHECK del esquema
+Fecha: 30/10/2026 16:51
+
+> mysql --port=3307 --vertical -e "SELECT ... FROM information_schema.check_constraints ..."
+1. row 
+      tabla: detalle_pedido
+restriccion: cantidad
+      regla: `cantidad` > 0
+ 2. row 
+      tabla: detalle_pedido
+restriccion: precio_unitario
+      regla: `precio_unitario` >= 0
+ 3. row 
+      tabla: donativos_independientes
+restriccion: chk_donativo_minimo
+      regla: `importe` > 10
+ 4. row 
+      tabla: donativos_independientes
+restriccion: chk_donativo_nombre
+      regla: `anonimo` <> 0 or `nombre_donante` is not null
+ 5. row 
+      tabla: historial_estado_pedido
+restriccion: chk_historial_actor
+      regla: `origen` = 'administradora' and `actor_id` is not null or `origen` = 'sistema' and `actor_id` is null
+ 6. row 
+      tabla: horarios_entrega
+restriccion: chk_horario
+      regla: `fin` > `inicio`
+ 7. row 
+      tabla: pagos
+restriccion: chk_pago_origen
+      regla: `pedido_id` is not null and `donativo_id` is null or `pedido_id` is null and `donativo_id` is not null
+ 8. row 
+      tabla: pagos
+restriccion: importe
+      regla: `importe` > 0
+ 9. row 
+      tabla: pedidos
+restriccion: chk_total
+      regla: `total` = `subtotal` + `donativo`
+ 10. row 
+      tabla: pedidos
+restriccion: donativo
+      regla: `donativo` >= 0
+ 11. row 
+      tabla: pedidos
+restriccion: subtotal
+      regla: `subtotal` >= 0
+ 12. row 
+      tabla: pedidos
+restriccion: total
+      regla: `total` >= 0
+ 13. row 
+      tabla: productos
+restriccion: precio
+      regla: `precio` >= 0

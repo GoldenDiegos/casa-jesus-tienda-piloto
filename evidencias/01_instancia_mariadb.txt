@@ -1,0 +1,9 @@
+Evidencia 1. Instancia MariaDB del piloto
+Fecha: 30/10/2026 16:51
+
+> mysql --port=3307 -e "SELECT @@port AS puerto, @@bind_address AS escucha, @@version AS version, @@datadir AS carpeta_datos;"
+1. row 
+       puerto: 3307
+      escucha: 127.0.0.1
+      version: 10.4.32-MariaDB
+carpeta_datos: C:\Users\diego\Documents\Codigo\E Commerce\Actividades\04_Integracion_Tecnologica_Piloto\entorno_local\datos\

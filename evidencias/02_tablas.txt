@@ -1,0 +1,18 @@
+Evidencia 2. Tablas de casa_jesus_piloto
+Fecha: 30/10/2026 16:51
+
+> mysql --port=3307 -e "SELECT table_name, engine, table_rows FROM information_schema.tables ..."
++--------------------------+--------+-------+
+| tabla                    | motor  | filas |
++--------------------------+--------+-------+
+| categorias               | InnoDB |     0 |
+| detalle_pedido           | InnoDB |     0 |
+| donativos_independientes | InnoDB |     0 |
+| historial_estado_pedido  | InnoDB |     0 |
+| horarios_entrega         | InnoDB |     0 |
+| pagos                    | InnoDB |     0 |
+| pedidos                  | InnoDB |     0 |
+| perfiles                 | InnoDB |     0 |
+| productos                | InnoDB |     0 |
+| puntos_entrega           | InnoDB |     0 |
++--------------------------+--------+-------+

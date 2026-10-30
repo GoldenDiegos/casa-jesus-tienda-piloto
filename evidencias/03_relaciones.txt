@@ -1,0 +1,17 @@
+Evidencia 3. Claves foráneas (relaciones)
+Fecha: 30/10/2026 16:51
+
+> mysql --port=3307 -e "SELECT ... FROM information_schema.key_column_usage ..."
++-------------------------+--------------+--------------------------+-----------------------+
+| tabla                   | columna      | referencia               | restriccion           |
++-------------------------+--------------+--------------------------+-----------------------+
+| detalle_pedido          | pedido_id    | pedidos                  | fk_detalle_pedido     |
+| detalle_pedido          | producto_id  | productos                | fk_detalle_producto   |
+| historial_estado_pedido | actor_id     | perfiles                 | fk_historial_actor    |
+| historial_estado_pedido | pedido_id    | pedidos                  | fk_historial_pedido   |
+| horarios_entrega        | punto_id     | puntos_entrega           | fk_horario_punto      |
+| pagos                   | donativo_id  | donativos_independientes | fk_pago_donativo      |
+| pagos                   | pedido_id    | pedidos                  | fk_pago_pedido        |
+| pedidos                 | horario_id   | horarios_entrega         | fk_pedido_horario     |
+| productos               | categoria_id | categorias               | fk_producto_categoria |
++-------------------------+--------------+--------------------------+-----------------------+

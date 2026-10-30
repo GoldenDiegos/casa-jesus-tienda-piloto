@@ -1,0 +1,22 @@
+Evidencia 8. Compilación del proyecto Next.js
+Fecha: 30/10/2026 16:51
+
+> npm run build
+> casa-jesus-integracion-piloto@0.1.0 build
+> next build
+▲ Next.js 16.4.3 (Turbopack)
+- Environments: .env.local
+✓ Running next.config took 19ms
+  Creating an optimized production build ...
+✓ Compiled successfully in 170ms
+  Running TypeScript ...
+  Finished TypeScript in 1ms ...
+  Collecting page data using 4 workers ...
+  Generating static pages using 4 workers (0/2) ...
+✓ Generating static pages using 4 workers (2/2) in 463ms
+  Finalizing page optimization ...
+Route (app)
+┌ ƒ /
+└ ○ /_not-found
+○  (Static)   prerendered as static content
+ƒ  (Dynamic)  server-rendered on demand

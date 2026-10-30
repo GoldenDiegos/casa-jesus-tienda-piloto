@@ -1,0 +1,10 @@
+Evidencia 7. Conexión Next.js → MariaDB (mysql2) y mínimo privilegio
+Fecha: 30/10/2026 16:51
+
+> npm run comprobar:bd
+npm run comprobar:permisos
+Conexión de aplicación correcta. Productos registrados: 0.
+Leer productos     permitido
+Borrar productos   rechazado (ER_TABLEACCESS_DENIED_ERROR)
+Insertar producto  rechazado (ER_TABLEACCESS_DENIED_ERROR)
+Leer pedidos       rechazado (ER_TABLEACCESS_DENIED_ERROR)
