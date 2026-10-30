@@ -1,0 +1,16 @@
+# Credenciales: nunca se suben
+.env
+.env.local
+.env.*.local
+
+# Datos de la instancia MariaDB local
+entorno_local/datos/
+
+# Dependencias, compilación y caché
+node_modules/
+.next/
+.npm-cache/
+
+# Documentos generados para la entrega
+*.pdf
+Entrega/
