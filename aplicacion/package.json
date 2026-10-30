@@ -1,0 +1,17 @@
+{
+  "name": "casa-jesus-integracion-piloto",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "next build",
+    "comprobar:bd": "node scripts/comprobar-bd.mjs",
+    "comprobar:permisos": "node scripts/comprobar-permisos.mjs"
+  },
+  "dependencies": {
+    "mysql2": "^3.24.6",
+    "next": "^16.2.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  }
+}
