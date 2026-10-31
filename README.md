@@ -4,21 +4,21 @@
 **Equipo 3:** Diego David Lara Martínez y Héctor Oropeza Pelcastre<br>
 **Docente:** María de Montserrat Villalobos Solís · **Entrega:** 30 de octubre de 2026
 
-Casa de Jesús es una asociación de Aguascalientes que vende pays y galletas y recibe donativos. En esta etapa se eligieron las tecnologías del piloto, se configuró la base de datos, se conectó la aplicación con ella y se documentó lo que falta. **Todavía no es la tienda**: la interfaz, el flujo de compra, los pagos y las pruebas funcionales son de la siguiente etapa, como marca la guía.
+Casa de Jesús es una asociación de Aguascalientes que vende pays y galletas y recibe donativos. En esta etapa se eligieron las tecnologías del piloto, se configuró la base de datos, se conectó la aplicación con ella y se documentó lo que falta. Todavía no es la tienda: la interfaz, el flujo de compra, los pagos y las pruebas funcionales son de la siguiente etapa, como marca la guía.
 
 ## Resumen del estado
 
-| | Componente | Estado |
-|---|---|---|
-| ✅ | MariaDB 10.4: base `casa_jesus_piloto` | Configurada y comprobada: 10 tablas, 9 claves foráneas y 13 reglas CHECK |
-| ✅ | Next.js 16 → MariaDB (mysql2) | Conectado con una cuenta que solo puede leer productos; probado en el navegador |
-| ✅ | GitHub | Este repositorio |
-| 🟠 | Base en la nube y Vercel | Pendiente: la base local solo escucha en 127.0.0.1 y Vercel no la alcanza |
-| 🟠 | Mercado Pago Checkout Pro (prueba) | Pendiente para la etapa de programación; la tabla `pagos` ya está lista |
-| ⚪ | Resend (correo con el folio) | Previsto |
-| 🟠 | Autenticación y almacenamiento de imágenes | Por elegir (antes los daba Supabase) |
+| Componente | Estado |
+|---|---|
+| MariaDB 10.4: base `casa_jesus_piloto` | Configurada y comprobada: 10 tablas, 9 claves foráneas y 13 reglas CHECK |
+| Next.js 16 → MariaDB (mysql2) | Conectado con una cuenta que solo puede leer productos; probado en el navegador |
+| GitHub | Este repositorio |
+| Base en la nube y Vercel | Pendiente: la base local solo escucha en 127.0.0.1 y Vercel no la alcanza |
+| Mercado Pago Checkout Pro (prueba) | Pendiente para la etapa de programación; la tabla `pagos` ya está lista |
+| Resend (correo con el folio) | Previsto |
+| Autenticación y almacenamiento de imágenes | Por elegir (antes los daba Supabase) |
 
-**Reparto del equipo** (plan del 28 de octubre): Héctor, base de datos (modelo, tablas, relaciones y reglas); Diego, arquitectura, ficha de tecnologías, flujo de datos, repositorio y conexión de la aplicación; los dos, bitácora, revisión y exposición.
+Reparto del equipo, según el plan del 28 de octubre: Héctor, base de datos (modelo, tablas, relaciones y reglas); Diego, arquitectura, ficha de tecnologías, flujo de datos, repositorio y conexión de la aplicación; los dos, bitácora, revisión y exposición.
 
 ## Entregables y criterios de evaluación
 
@@ -30,7 +30,7 @@ Casa de Jesús es una asociación de Aguascalientes que vende pays y galletas y 
 | Integración inicial de tecnologías | 25 | 4. Evidencia de configuración e integración | [Sección 4](#4-evidencia-de-configuración-e-integración) |
 | Documentación técnica y exposición | 15 | 5. Mapa del flujo de datos · 6. Bitácora · 7. Video | [Secciones 5 a 7](#5-mapa-del-flujo-de-datos) |
 
-El documento completo (`Equipo3_Integracion_Tecnologica.pdf`, en Word carta con formato APA) se entregó en Classroom. Este repositorio tiene lo que lo respalda: el código, el esquema y la salida real de cada comprobación.
+El documento completo (`Equipo3_Integracion_Tecnologica.pdf`, en Word carta con formato APA) se entrega en Classroom. Este repositorio tiene lo que lo respalda: el código, el esquema y la salida real de cada comprobación.
 
 ---
 
@@ -51,7 +51,7 @@ Las líneas turquesas son conexiones configuradas y comprobadas; las grises, pre
 |---|---|---|---|---|
 | MariaDB 10.4 (InnoDB) | Catálogo, pedidos, donativos, pagos y entregas | Ya estaba instalada con XAMPP; MariaDB aplica reglas CHECK e InnoDB maneja claves foráneas y transacciones | R-001 a R-010, R-024 | Configurada y comprobada |
 | Next.js 16.4 y React 19.3 | Páginas y código de servidor | Las consultas se hacen en el servidor; las variables sin `NEXT_PUBLIC_` no llegan al navegador | R-003, R-010, R-016 | Compila y lee la base |
-| mysql2 | Conexión de Next.js con MariaDB | `execute()` usa consultas preparadas, que separan el SQL de los datos | R-021 | Conectado, solo lectura |
+| mysql2 | Conexión de Next.js con MariaDB | `execute()` usa consultas preparadas, y así un dato del cliente no se interpreta como SQL | R-024 | Conectado, solo lectura |
 | Git y GitHub | Control de versiones y respaldo del código | Historial de cambios y punto de partida para Vercel | R-027 | Conectado |
 | Vercel | Publicar la tienda | Despliega directo desde GitHub | R-027 | Pendiente |
 | Mercado Pago Checkout Pro | Cobro en modo de prueba | El cliente paga en la página de Mercado Pago; la tienda nunca ve la tarjeta | R-006, R-007 | Pendiente |
@@ -65,7 +65,7 @@ Las líneas turquesas son conexiones configuradas y comprobadas; las grises, pre
 ![Modelo relacional](graficas/fig3_modelo_datos.png)
 
 - **Esquema:** [`esquema_casa_jesus.sql`](esquema_casa_jesus.sql), con 10 tablas.
-- **Migraciones:** [`migraciones/001_historial_y_donativos.sql`](migraciones/001_historial_y_donativos.sql), que agrega al historial el origen del cambio y al donativo folio, nombre opcional y mínimo de $10.
+- **Migraciones:** [`migraciones/001_historial_y_donativos.sql`](migraciones/001_historial_y_donativos.sql), que agrega al historial el origen del cambio y al donativo folio, nombre opcional y monto mayor a $10.
 
 | Decisión | Requisito |
 |---|---|

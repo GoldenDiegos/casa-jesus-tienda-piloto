@@ -1,9 +1,9 @@
 # Entorno local de Casa de Jesús
 
-Esta carpeta contiene una instancia de MariaDB para el piloto, separada de la instancia del otro proyecto. Usa los ejecutables de XAMPP y sus propios datos y puerto TCP 3307, limitado a `127.0.0.1`. Solo sirve para desarrollo local con información ficticia.
+Instancia de MariaDB del piloto, separada de la que usa otro proyecto en el puerto 3306. Usa los ejecutables de XAMPP, pero tiene su propia carpeta de datos (`datos/`, fuera de Git) y escucha solo en `127.0.0.1:3307`. Es para desarrollo local y con datos de prueba.
 
-La aplicación web todavía no está construida. Cuando exista, se ejecutará en su propio puerto y se conectará a esta instancia; su puerto se definirá al preparar el proyecto.
+`iniciar_base.ps1` y `detener_base.ps1` arrancan y detienen solo esta instancia. Antes de hacer nada revisan que el puerto 3307 sea de esta carpeta de datos, así que no tocan Apache, el proxy ni la otra instancia.
 
-Para iniciar o detener únicamente esta instancia, ejecutar `iniciar_base.ps1` o `detener_base.ps1` desde PowerShell. No detienen Apache, el proxy ni la instancia de MariaDB del otro proyecto.
+La aplicación de `aplicacion/` se conecta aquí con la cuenta `cj_piloto_lectura`, que solo puede leer `productos`, y se probó en 127.0.0.1:3100.
 
-La cuenta local inicial es solo para configuración y no debe exponerse a la red ni usarse en producción. Antes de desplegar o almacenar datos reales se requieren cuentas con privilegios limitados y credenciales seguras fuera del repositorio.
+La cuenta `root` de esta instancia todavía no tiene contraseña. Como solo acepta conexiones de la misma computadora no afecta la demostración, pero se le pondrá antes de guardar datos reales.

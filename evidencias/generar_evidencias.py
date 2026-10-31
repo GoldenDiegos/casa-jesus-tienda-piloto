@@ -19,7 +19,7 @@ APP = AQUI.parent / "aplicacion"
 MYSQL = r"C:\xampp\mysql\bin\mysql.exe"
 BASE = [MYSQL, "--no-defaults", "--protocol=tcp", "--host=127.0.0.1", "--port=3307", "--user=root"]
 FECHA = datetime.now().strftime("%d/%m/%Y %H:%M")
-ANCHO_MAX = 100  # caracteres por línea en la imagen
+ANCHO_MAX = 84  # caracteres por línea: a 28 px queda arriba de 8 pt al imprimir a 6.5"
 # DejaVu Sans Mono viene con matplotlib y tiene los símbolos de la salida de Next.js (✓, ┌, └)
 FUENTES = Path(matplotlib.get_data_path()) / "fonts" / "ttf"
 
@@ -29,11 +29,12 @@ SQL_TABLAS = ("SELECT table_name AS tabla, engine AS motor, table_rows AS filas 
 SQL_RELACIONES = ("SELECT table_name AS tabla, column_name AS columna, referenced_table_name AS referencia, "
                   "constraint_name AS restriccion FROM information_schema.key_column_usage "
                   "WHERE table_schema='casa_jesus_piloto' AND referenced_table_name IS NOT NULL ORDER BY 1, 2;")
-SQL_RESTRICCIONES = ("SELECT tc.table_name AS tabla, tc.constraint_name AS restriccion, cc.check_clause AS regla "
+# Una línea por regla (tabla.restricción: regla) para que la imagen quepa legible en la hoja
+SQL_RESTRICCIONES = ("SELECT CONCAT(tc.table_name, '.', tc.constraint_name, ': ', cc.check_clause) AS regla "
                      "FROM information_schema.table_constraints tc JOIN information_schema.check_constraints cc "
                      "ON cc.constraint_schema = tc.constraint_schema AND cc.constraint_name = tc.constraint_name "
                      "AND cc.table_name = tc.table_name WHERE tc.table_schema='casa_jesus_piloto' "
-                     "AND tc.constraint_type='CHECK' ORDER BY 1, 2;")
+                     "AND tc.constraint_type='CHECK' ORDER BY 1;")
 SQL_RECHAZOS = """START TRANSACTION;
 INSERT INTO productos (nombre, precio) VALUES ('Prueba precio negativo', -10);
 INSERT INTO productos (nombre, precio, categoria_id) VALUES ('Prueba categoria inexistente', 100, 999);
@@ -58,8 +59,8 @@ def sql(consulta, extra=()):
 
 
 def imagen(nombre, titulo, comando, salida):
-    fuente = ImageFont.truetype(str(FUENTES / "DejaVuSansMono.ttf"), 24)
-    negrita = ImageFont.truetype(str(FUENTES / "DejaVuSansMono-Bold.ttf"), 24)
+    fuente = ImageFont.truetype(str(FUENTES / "DejaVuSansMono.ttf"), 28)
+    negrita = ImageFont.truetype(str(FUENTES / "DejaVuSansMono-Bold.ttf"), 28)
     lineas = [(f"> {l}" if i == 0 else f"  {l}", "#7FDBCA") for i, l in enumerate(comando.split("\n"))]
     lineas += [(l, "#E6E6E6") for l in salida.split("\n")]
     # Para que se lea impresa a lo ancho de la hoja, las líneas largas se parten (las tablas no)
@@ -73,18 +74,19 @@ def imagen(nombre, titulo, comando, salida):
         partidas += [(x, color) for x in trozos]
     lineas = partidas
     sello = f"Casa de Jesús · piloto · {FECHA}"
-    ancho = max(int(negrita.getlength(titulo) + fuente.getlength(sello)) + 100,
+    # El sello va en una segunda línea del encabezado: así el ancho lo marca el contenido
+    ancho = max(int(negrita.getlength(titulo)) + 60, int(fuente.getlength(sello)) + 60,
                 max(int(fuente.getlength(t)) for t, _ in lineas) + 80)
-    alto = 70 + 40 + len(lineas) * 34 + 40
+    alto = 100 + 40 + len(lineas) * 40 + 40
     im = Image.new("RGB", (ancho, alto), "#0F1E2E")
     d = ImageDraw.Draw(im)
-    d.rectangle((0, 0, ancho, 56), fill="#1B3A57")
-    d.text((24, 14), titulo, font=negrita, fill="#FFFFFF")
-    d.text((ancho - 24, 14), sello, font=fuente, fill="#9FC5E8", anchor="ra")
-    y = 90
+    d.rectangle((0, 0, ancho, 96), fill="#1B3A57")
+    d.text((24, 12), titulo, font=negrita, fill="#FFFFFF")
+    d.text((24, 52), sello, font=fuente, fill="#9FC5E8")
+    y = 130
     for t, color in lineas:
         d.text((40, y), t, font=fuente, fill=color)
-        y += 34
+        y += 40
     im.save(AQUI / f"{nombre}.png")
     (AQUI / f"{nombre}.txt").write_text(f"{titulo}\nFecha: {FECHA}\n\n> {comando}\n{salida}\n", encoding="utf-8")
     print("ok", nombre)
@@ -99,8 +101,8 @@ def main():
     imagen("03_relaciones", "Evidencia 3. Claves foráneas (relaciones)",
            "mysql --port=3307 -e \"SELECT ... FROM information_schema.key_column_usage ...\"", sql(SQL_RELACIONES))
     imagen("04_restricciones_check", "Evidencia 4. Reglas CHECK del esquema",
-           "mysql --port=3307 --vertical -e \"SELECT ... FROM information_schema.check_constraints ...\"",
-           sql(SQL_RESTRICCIONES, ["--vertical"]).replace("*", "").strip())
+           "mysql --port=3307 -N -e \"SELECT CONCAT(tabla, '.', restriccion, ': ', regla) FROM ...\"",
+           correr(BASE + ["--batch", "--skip-column-names", "-e", SQL_RESTRICCIONES]))
     imagen("05_rechazos_integridad", "Evidencia 5. Datos inválidos rechazados (transacción con ROLLBACK)",
            SQL_RECHAZOS.strip(), correr(BASE + ["--force", "--table", "casa_jesus_piloto"], SQL_RECHAZOS, errores_primero=True))
     grants = correr(BASE + ["--skip-column-names", "-e", "SHOW GRANTS FOR 'cj_piloto_lectura'@'127.0.0.1';"])

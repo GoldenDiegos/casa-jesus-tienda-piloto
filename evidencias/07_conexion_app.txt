@@ -1,5 +1,5 @@
 Evidencia 7. Conexión Next.js → MariaDB (mysql2) y mínimo privilegio
-Fecha: 30/10/2026 16:51
+Fecha: 30/10/2026 18:10
 
 > npm run comprobar:bd
 npm run comprobar:permisos

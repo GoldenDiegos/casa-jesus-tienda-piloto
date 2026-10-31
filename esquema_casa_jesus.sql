@@ -1,4 +1,6 @@
--- Esquema inicial aislado para la actividad. MariaDB 10.4 / InnoDB.
+-- Versión vigente del esquema del piloto. MariaDB 10.4 / InnoDB.
+-- Ya incluye la migración 001; esa migración documenta el cambio sobre la primera versión
+-- y no se aplica sobre este archivo.
 -- Crear una sola vez en una instancia de desarrollo; sin datos reales ni tarjetas.
 CREATE DATABASE casa_jesus_piloto CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 USE casa_jesus_piloto;

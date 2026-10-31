@@ -2,8 +2,9 @@
 -- 1) El cambio a «pagado» lo hace el sistema al verificar el aviso de Mercado Pago, sin persona:
 --    actor_id pasa a opcional y se agrega el origen del cambio. Los estados usan el mismo ENUM que pedidos.
 -- 2) El donativo sin compra necesita folio para su comprobante, nombre opcional (anónimo)
---    y un mínimo mayor a $10 (R-008).
+--    y un importe mayor a $10 (R-008).
 -- Se aplicó con las tablas vacías; no hay datos que migrar.
+-- esquema_casa_jesus.sql ya trae este cambio: esta migración es solo para una base creada con la primera versión.
 USE casa_jesus_piloto;
 
 ALTER TABLE historial_estado_pedido

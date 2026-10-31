@@ -1,5 +1,5 @@
 Evidencia 1. Instancia MariaDB del piloto
-Fecha: 30/10/2026 16:51
+Fecha: 30/10/2026 18:10
 
 > mysql --port=3307 -e "SELECT @@port AS puerto, @@bind_address AS escucha, @@version AS version, @@datadir AS carpeta_datos;"
 1. row 

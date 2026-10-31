@@ -1,5 +1,5 @@
 Evidencia 5. Datos inválidos rechazados (transacción con ROLLBACK)
-Fecha: 30/10/2026 16:51
+Fecha: 30/10/2026 18:10
 
 > START TRANSACTION;
 INSERT INTO productos (nombre, precio) VALUES ('Prueba precio negativo', -10);
