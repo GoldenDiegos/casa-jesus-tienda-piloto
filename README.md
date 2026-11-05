@@ -1,7 +1,7 @@
 # Integración tecnológica del piloto · Tienda en línea de Casa de Jesús, A.C.
 
 **Taller de Proyecto Social Integrador** · Global University · Licenciatura en Ciberseguridad y Desarrollo de Software<br>
-**Equipo 3:** Diego David Lara Martínez y Héctor Oropeza Pelcastre<br>
+**Integrantes:** Diego David Lara Martínez y Héctor Oropeza Pelcastre<br>
 **Docente:** María de Montserrat Villalobos Solís · **Entrega:** 30 de octubre de 2026
 
 Casa de Jesús es una asociación de Aguascalientes que vende pays y galletas y recibe donativos. En esta etapa se eligieron las tecnologías del piloto, se configuró la base de datos, se conectó la aplicación con ella y se documentó lo que falta. Todavía no es la tienda: la interfaz, el flujo de compra, los pagos y las pruebas funcionales son de la siguiente etapa, como marca la guía.
@@ -30,7 +30,7 @@ Reparto del equipo, según el plan del 28 de octubre: Héctor, base de datos (mo
 | Integración inicial de tecnologías | 25 | 4. Evidencia de configuración e integración | [Sección 4](#4-evidencia-de-configuración-e-integración) |
 | Documentación técnica y exposición | 15 | 5. Mapa del flujo de datos · 6. Bitácora · 7. Video | [Secciones 5 a 7](#5-mapa-del-flujo-de-datos) |
 
-El documento completo (`Equipo3_Integracion_Tecnologica.pdf`, en Word carta con formato APA) se entrega en Classroom. Este repositorio tiene lo que lo respalda: el código, el esquema y la salida real de cada comprobación.
+El documento completo (`Diego_y_Hector_Integracion_Tecnologica.pdf`, en Word carta con formato APA) se entrega en Classroom. Este repositorio tiene lo que lo respalda: el código, el esquema y la salida real de cada comprobación.
 
 ---
 
@@ -145,7 +145,7 @@ Hoy solo funciona el paso 1. Los demás describen cómo viajará la información
 
 ## 7. Video del equipo
 
-La presentación de Canva (5 a 7 minutos) explica la arquitectura, las tecnologías, la base de datos, las conexiones y los siguientes pasos. El enlace va en el documento entregado en Classroom.
+La presentación de Canva (5 a 7 minutos) explica la arquitectura, las tecnologías, la base de datos, las conexiones y los siguientes pasos. El video se entrega en la carpeta de Classroom.
 
 ---
 
