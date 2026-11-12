@@ -1,0 +1,53 @@
+name: Publicar demostración de interfaz
+
+on:
+  push:
+    branches: [interfaz-seo]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    if: github.ref == 'refs/heads/interfaz-seo'
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: interfaz-seo/aplicacion
+    env:
+      CASA_JESUS_STATIC: '1'
+      CATALOGO_VALIDADO: 'false'
+      NEXT_PUBLIC_BASE_PATH: /casa-jesus-tienda-piloto
+      CASA_JESUS_ROOT: ${{ github.workspace }}/interfaz-seo
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+          cache-dependency-path: interfaz-seo/aplicacion/package-lock.json
+      - run: npm ci
+      - run: npm test
+      - run: npm run build
+      - run: touch out/.nojekyll
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: interfaz-seo/aplicacion/out
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
