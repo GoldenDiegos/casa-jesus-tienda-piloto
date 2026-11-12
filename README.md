@@ -4,6 +4,8 @@
 **Integrantes:** Diego David Lara Martínez y Héctor Oropeza Pelcastre<br>
 **Docente:** María de Montserrat Villalobos Solís · **Entrega:** 30 de octubre de 2026
 
+> **Actividad 05 (interfaz y SEO):** el código está en [`interfaz-seo/aplicacion`](interfaz-seo/aplicacion) y la demostración publicada en https://goldendiegos.github.io/casa-jesus-tienda-piloto/. Lo que sigue en este archivo corresponde a la actividad 04.
+
 Casa de Jesús es una asociación de Aguascalientes que vende pays y galletas y recibe donativos. En esta etapa se eligieron las tecnologías del piloto, se configuró la base de datos, se conectó la aplicación con ella y se documentó lo que falta. Todavía no es la tienda: la interfaz, el flujo de compra, los pagos y las pruebas funcionales son de la siguiente etapa, como marca la guía.
 
 ## Resumen del estado
