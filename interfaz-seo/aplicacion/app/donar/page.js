@@ -1,3 +1,22 @@
 import Donar from '../../components/Donar';
-export const metadata={title:'Donativo de demostración',description:'Conoce el recorrido de donativo simulado de Casa de Jesús.',robots:{index:false,follow:true},openGraph:{title:'Donativo de demostración | Casa de Jesús',description:'Conoce el recorrido de donativo simulado de Casa de Jesús.',type:'website',locale:'es_MX'}};
-export default function Page(){return <section className="seccion"><p className="sobrelinea">APOYAR</p><h1>Donativo de demostración</h1><p className="intro">Conoce cómo sería el recorrido para aportar sin comprar productos.</p><Donar/></section>}
+export const metadata = {
+  title: 'Donativo de demostración',
+  description: 'Conoce el recorrido de donativo simulado de Casa de Jesús.',
+  robots: { index: false, follow: true },
+  openGraph: {
+    title: 'Donativo de demostración | Casa de Jesús',
+    description: 'Conoce el recorrido de donativo simulado de Casa de Jesús.',
+    type: 'website',
+    locale: 'es_MX',
+  },
+};
+export default function Page() {
+  return (
+    <section className="seccion">
+      <p className="sobrelinea">APOYAR</p>
+      <h1>Donativo de demostración</h1>
+      <p className="intro">Conoce cómo sería el recorrido para aportar sin comprar productos.</p>
+      <Donar />
+    </section>
+  );
+}
