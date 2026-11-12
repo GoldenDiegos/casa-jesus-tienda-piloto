@@ -26,6 +26,7 @@ jobs:
       CASA_JESUS_STATIC: '1'
       CATALOGO_VALIDADO: 'false'
       NEXT_PUBLIC_BASE_PATH: /casa-jesus-tienda-piloto
+      SITIO_DEMO_URL: https://goldendiegos.github.io/casa-jesus-tienda-piloto
       CASA_JESUS_ROOT: ${{ github.workspace }}/interfaz-seo
     steps:
       - uses: actions/checkout@v4

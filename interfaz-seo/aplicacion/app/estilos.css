@@ -624,3 +624,28 @@ select[aria-invalid='true'] {
   outline: 3px solid var(--verde);
   outline-offset: 3px;
 }
+
+/* Migas de pan de la ficha de producto. */
+.migas ol {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.25rem;
+  list-style: none;
+  margin: 0 0 1rem;
+  padding: 0;
+}
+.migas li + li::before {
+  content: '/';
+  margin-right: 0.25rem;
+  color: #6b625c;
+}
+.migas a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  color: var(--verde);
+}
+.migas [aria-current] {
+  color: var(--tinta);
+}

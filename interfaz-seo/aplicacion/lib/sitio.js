@@ -22,3 +22,20 @@ export function canonical(ruta) {
   const base = urlPublica();
   return base ? `${base}${ruta}` : undefined;
 }
+
+// Dirección donde vive esta versión (dominio validado o la demostración publicada).
+// Solo se usa para enlaces absolutos de migas de pan e imagen para compartir, no para indexar.
+export function urlSitio() {
+  const base = urlPublica();
+  if (base) return base;
+  const demo = process.env.SITIO_DEMO_URL;
+  return demo && /^https:\/\/[^\s]+$/.test(demo) ? demo.replace(/\/$/, '') : null;
+}
+
+// Imagen para compartir (1200 × 630) que usan todas las rutas en Open Graph.
+export const imagenCompartir = {
+  url: `${process.env.NEXT_PUBLIC_BASE_PATH || ''}/imagenes/compartir-casa-de-jesus.png`,
+  width: 1200,
+  height: 630,
+  alt: 'Tienda de demostración de Casa de Jesús: pays y galletas para compartir, con la ilustración de un pay de queso',
+};
