@@ -9,7 +9,7 @@ export function generateMetadata() {
     ...(url ? { alternates: { canonical: url } } : {}),
     openGraph: {
       title: 'Catálogo de pays y galletas | Casa de Jesús',
-      description: 'Explora productos de ejemplo en nuestra tienda de demostración.',
+      description: 'Explora el catálogo de demostración de pays y galletas de Casa de Jesús.',
       ...(url ? { url } : {}),
     },
   };
