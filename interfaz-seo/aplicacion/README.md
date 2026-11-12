@@ -10,7 +10,7 @@ Requisitos: Node.js 22 o posterior.
 
 ```bash
 npm install
-npm test          # 12 pruebas de carrito, interacciones y metadatos
+npm test          # 12 pruebas de carrito, interacciones y configuración de URL públicas
 npm run dev       # servidor de desarrollo en http://localhost:3000
 npm run build     # compilación de producción
 ```

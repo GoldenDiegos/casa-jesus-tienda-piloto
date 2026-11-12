@@ -5,7 +5,11 @@ export const dynamic = 'force-static';
 export default function sitemap() {
   const base = urlPublica();
   if (!base) return [];
-  return ['/', '/catalogo', ...productos.map((p) => `/productos/${p.slug}`)].map((ruta) => ({
+  return [
+    '/',
+    '/catalogo',
+    ...productos.filter((p) => p.disponible !== false).map((p) => `/productos/${p.slug}`),
+  ].map((ruta) => ({
     url: `${base}${ruta}`,
   }));
 }
