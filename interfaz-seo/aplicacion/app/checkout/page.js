@@ -1,9 +1,11 @@
 import Checkout from '../../components/Checkout';
+import { imagenCompartir } from '../../lib/sitio';
 export const metadata = {
   title: 'Cierre de pedido de demostración',
   description: 'Conoce el cierre de pedido simulado de la tienda de Casa de Jesús.',
   robots: { index: false, follow: true },
   openGraph: {
+    images: [imagenCompartir],
     title: 'Cierre de pedido de demostración | Casa de Jesús',
     description: 'Conoce el cierre de pedido simulado de la tienda de Casa de Jesús.',
     type: 'website',

@@ -1,9 +1,11 @@
 import Donar from '../../components/Donar';
+import { imagenCompartir } from '../../lib/sitio';
 export const metadata = {
   title: 'Donativo de demostración',
   description: 'Conoce el recorrido de donativo simulado de Casa de Jesús.',
   robots: { index: false, follow: true },
   openGraph: {
+    images: [imagenCompartir],
     title: 'Donativo de demostración | Casa de Jesús',
     description: 'Conoce el recorrido de donativo simulado de Casa de Jesús.',
     type: 'website',

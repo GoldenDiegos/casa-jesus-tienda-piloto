@@ -1,13 +1,18 @@
 import Link from 'next/link';
-import { urlPublica } from '../lib/sitio';
+import { urlPublica, urlSitio, imagenCompartir } from '../lib/sitio';
 import './estilos.css';
 export const metadata = {
-  title: { default: 'Casa de Jesús | Tienda de demostración', template: '%s | Casa de Jesús' },
+  ...(urlSitio() ? { metadataBase: new URL(new URL(urlSitio()).origin) } : {}),
+  title: {
+    default: 'Pays y galletas de Casa de Jesús | Tienda de demostración',
+    template: '%s | Casa de Jesús',
+  },
   description:
     'Conoce la propuesta de tienda en línea para Casa de Jesús, A.C. Demostración académica con productos de ejemplo.',
   robots: { index: !!urlPublica(), follow: true },
   openGraph: {
-    title: 'Casa de Jesús | Tienda de demostración',
+    images: [imagenCompartir],
+    title: 'Pays y galletas de Casa de Jesús | Tienda de demostración',
     description:
       'Conoce la propuesta de tienda en línea para Casa de Jesús, A.C. Demostración académica con productos de ejemplo.',
     type: 'website',

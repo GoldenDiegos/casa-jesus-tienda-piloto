@@ -1,6 +1,6 @@
 import Catalogo from '../../components/Catalogo';
 import { productos } from '../../lib/productos';
-import { canonical } from '../../lib/sitio';
+import { canonical, imagenCompartir } from '../../lib/sitio';
 export function generateMetadata() {
   const url = canonical('/catalogo');
   return {
@@ -8,6 +8,7 @@ export function generateMetadata() {
     description: 'Explora el catálogo de demostración de pays y galletas de Casa de Jesús.',
     ...(url ? { alternates: { canonical: url } } : {}),
     openGraph: {
+      images: [imagenCompartir],
       title: 'Catálogo de pays y galletas | Casa de Jesús',
       description: 'Explora el catálogo de demostración de pays y galletas de Casa de Jesús.',
       ...(url ? { url } : {}),
