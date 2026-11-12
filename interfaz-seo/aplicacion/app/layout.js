@@ -21,6 +21,10 @@ export default function Layout({ children }) {
         <a className="saltar" href="#contenido">
           Ir al contenido
         </a>
+        <p className="aviso" role="note">
+          Demostración académica: productos, precios, inventario, pagos, entregas y donativos son de
+          ejemplo. No se cobra ni se guarda ningún pedido.
+        </p>
         <header className="cabecera">
           <Link href="/" className="marca">
             <span className="marca-icono">♥</span>
@@ -32,9 +36,7 @@ export default function Layout({ children }) {
             <Link href="/">Inicio</Link>
             <Link href="/catalogo">Catálogo</Link>
             <Link href="/donar">Donar</Link>
-            <Link href="/carrito">
-              Carrito <span aria-hidden="true">↗</span>
-            </Link>
+            <Link href="/carrito">Carrito</Link>
           </nav>
         </header>
         <main id="contenido">{children}</main>

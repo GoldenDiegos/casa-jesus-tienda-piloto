@@ -7,9 +7,10 @@ export default function Tarjeta({ producto }) {
         href={`/productos/${producto.slug}`}
         className="producto-imagen"
         style={{ backgroundColor: producto.color }}
-        aria-label={`Ver ${producto.nombre}`}
+        aria-hidden="true"
+        tabIndex={-1}
       >
-        <img src={producto.imagen} alt={producto.alt} loading="lazy" />
+        <img src={producto.imagen} alt={producto.alt} width="600" height="400" loading="lazy" />
       </Link>
       <div className="producto-info">
         <p className="etiqueta">{producto.categoria}</p>

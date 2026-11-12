@@ -13,7 +13,7 @@ export const metadata = {
 export default function Page() {
   return (
     <section className="seccion">
-      <p className="sobrelinea">ÚLTIMO PASO</p>
+      <p className="sobrelinea">Entrega y cierre · demostración</p>
       <h1>Cierre de pedido</h1>
       <p className="intro">
         Esta pantalla es una demostración: no se enviarán datos ni se cobrará un pago.

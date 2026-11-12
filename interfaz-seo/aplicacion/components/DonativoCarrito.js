@@ -25,13 +25,17 @@ export default function DonativoCarrito({ onChange }) {
   return (
     <form onSubmit={actualizar} className="donativo-opcional">
       <label htmlFor="donativo-compra">Donativo opcional de ejemplo</label>
-      <p>Inicia en $0. Este importe no representa un cobro real.</p>
+      <p>
+        Inicia en $0. Este importe no representa un cobro real. Pulsa «Actualizar donativo» para
+        sumarlo al total.
+      </p>
       <input
         id="donativo-compra"
         inputMode="decimal"
         value={valor}
         onChange={(e) => setValor(e.target.value)}
         aria-describedby="mensaje-donativo"
+        aria-invalid={mensaje.startsWith('Ingresa')}
       />
       <button className="boton-secundario" type="submit">
         Actualizar donativo

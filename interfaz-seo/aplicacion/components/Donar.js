@@ -27,6 +27,7 @@ export default function Donar() {
         value={valor}
         onChange={(e) => setValor(e.target.value)}
         aria-describedby="estado-donativo"
+        aria-invalid={mensaje.startsWith('Ingresa')}
       />
       <p>Opciones de ejemplo:</p>
       <div className="acciones">
@@ -46,7 +47,11 @@ export default function Donar() {
           Simular donativo
         </button>
       </p>
-      <p id="estado-donativo" role="status">
+      <p
+        id="estado-donativo"
+        role="status"
+        className={mensaje && !mensaje.startsWith('Ingresa') ? 'nota' : undefined}
+      >
         {mensaje}
       </p>
     </form>

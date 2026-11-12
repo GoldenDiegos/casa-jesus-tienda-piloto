@@ -66,6 +66,7 @@ export default function Checkout() {
             value={punto}
             onChange={(e) => setPunto(e.target.value)}
             aria-describedby={error ? 'error-entrega' : undefined}
+            aria-invalid={!!error && !punto}
           >
             <option value="">Selecciona un punto</option>
             <option value="Punto de ejemplo A">Punto de ejemplo A</option>
@@ -80,6 +81,7 @@ export default function Checkout() {
             value={horario}
             onChange={(e) => setHorario(e.target.value)}
             aria-describedby={error ? 'error-entrega' : undefined}
+            aria-invalid={!!error && !horario}
           >
             <option value="">Selecciona un horario</option>
             <option value="10:00–12:00">10:00–12:00</option>
@@ -95,16 +97,18 @@ export default function Checkout() {
           No se guardan pedidos ni se envían datos. El pago y la entrega están pendientes de
           integración.
         </p>
-        {confirmado ? (
-          <div role="status" className="nota">
-            <strong>Recorrido terminado.</strong> No se realizó ningún pedido ni cargo. Elegiste{' '}
-            {punto}, de {horario}.
-          </div>
-        ) : (
-          <button className="boton" type="submit">
-            Finalizar demostración
-          </button>
-        )}
+        {/* La región de estado existe desde el inicio para que el lector de pantalla anuncie el cierre. */}
+        <div role="status" aria-live="polite">
+          {confirmado && (
+            <p className="nota">
+              <strong>Recorrido terminado.</strong> No se realizó ningún pedido ni cargo. Elegiste{' '}
+              {punto}, de {horario}.
+            </p>
+          )}
+        </div>
+        <button className="boton" type="submit" disabled={confirmado}>
+          {confirmado ? 'Demostración finalizada' : 'Finalizar demostración'}
+        </button>
         <p>
           <Link href="/carrito" className="enlace">
             ← Volver al carrito

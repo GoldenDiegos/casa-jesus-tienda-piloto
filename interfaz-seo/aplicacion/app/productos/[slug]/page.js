@@ -33,7 +33,7 @@ export default async function Producto({ params }) {
       </p>
       <div className="detalle">
         <div className="detalle-imagen" style={{ backgroundColor: p.color }}>
-          <img src={p.imagen} alt={p.alt} />
+          <img src={p.imagen} alt={p.alt} width="600" height="400" />
         </div>
         <div>
           <p className="sobrelinea">{p.categoria} · DEMOSTRACIÓN</p>
