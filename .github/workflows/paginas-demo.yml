@@ -2,7 +2,10 @@ name: Publicar demostración de interfaz
 
 on:
   push:
-    branches: [interfaz-seo]
+    branches: [main]
+    paths:
+      - 'interfaz-seo/**'
+      - '.github/workflows/paginas-demo.yml'
   workflow_dispatch:
 
 permissions:
@@ -14,7 +17,7 @@ concurrency:
 
 jobs:
   build:
-    if: github.ref == 'refs/heads/interfaz-seo'
+    if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     defaults:
       run:
