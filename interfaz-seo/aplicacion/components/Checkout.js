@@ -14,6 +14,7 @@ export default function Checkout() {
   const [donativo, setDonativo] = useState(0);
   const puntoRef = useRef(null);
   const horarioRef = useRef(null);
+  const confirmacionRef = useRef(null);
   useEffect(() => {
     const anteriores = leerCarrito();
     const validos = anteriores.filter((i) => {
@@ -29,6 +30,10 @@ export default function Checkout() {
     setItems(validos);
     setDonativo(validos.length ? leerDonativo() : 0);
   }, []);
+  // Al terminar, el botón se desactiva; el foco pasa a la confirmación para no perderse.
+  useEffect(() => {
+    if (confirmado) confirmacionRef.current?.focus();
+  }, [confirmado]);
   if (!items) return <p role="status">Cargando resumen…</p>;
   const productos = items
     .map((i) => ({ ...i, p: obtenerProducto(i.slug) }))
@@ -100,7 +105,7 @@ export default function Checkout() {
         {/* La región de estado existe desde el inicio para que el lector de pantalla anuncie el cierre. */}
         <div role="status" aria-live="polite">
           {confirmado && (
-            <p className="nota">
+            <p className="nota" ref={confirmacionRef} tabIndex={-1}>
               <strong>Recorrido terminado.</strong> No se realizó ningún pedido ni cargo. Elegiste{' '}
               {punto}, de {horario}.
             </p>

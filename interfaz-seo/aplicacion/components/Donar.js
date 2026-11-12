@@ -1,13 +1,15 @@
 'use client';
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { validarImporte } from '../lib/donativo';
 import { moneda } from '../lib/productos';
 export default function Donar() {
   const [valor, setValor] = useState('50');
   const [mensaje, setMensaje] = useState('');
+  const montoRef = useRef(null);
   function simular(e) {
     e.preventDefault();
     const monto = validarImporte(valor, { minimo: 10.01 });
+    if (monto === null) montoRef.current?.focus();
     setMensaje(
       monto === null
         ? 'Ingresa un importe mayor a $10 y hasta $100,000, con máximo dos decimales.'
@@ -23,6 +25,7 @@ export default function Donar() {
       </label>
       <input
         id="monto-donativo"
+        ref={montoRef}
         inputMode="decimal"
         value={valor}
         onChange={(e) => setValor(e.target.value)}

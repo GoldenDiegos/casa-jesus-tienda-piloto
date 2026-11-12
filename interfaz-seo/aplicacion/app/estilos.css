@@ -611,3 +611,16 @@ footer a,
     grid-template-columns: 1fr;
   }
 }
+
+/* Campos con error: borde y fondo visibles además del mensaje. */
+input[aria-invalid='true'],
+select[aria-invalid='true'] {
+  border-color: var(--naranja);
+  border-width: 2px;
+  background: #fdf3ef;
+}
+/* La confirmación recibe el foco al terminar; se marca para que no se pierda de vista. */
+.nota:focus {
+  outline: 3px solid var(--verde);
+  outline-offset: 3px;
+}
